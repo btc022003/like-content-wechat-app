@@ -1,0 +1,16 @@
+@import "~taro-ui/dist/style/index.scss";
+
+.link-reg-login {
+  float: right;
+  color: #6190E8;
+  margin-top: 10px;
+  margin-right: 20px;
+  font-size: 28px;
+}
+
+at-fab {
+  position: fixed;
+  z-index: 1000;
+  right: 30px;
+  bottom: 100px;
+}
