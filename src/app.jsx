@@ -11,7 +11,12 @@ import './app.scss';
 
 class App extends Component {
   config = {
-    pages: ['pages/index/index', 'pages/auth/login', 'pages/auth/reg'],
+    pages: [
+      'pages/index/index',
+      'pages/auth/login',
+      'pages/auth/reg',
+      'pages/user/publish',
+    ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',

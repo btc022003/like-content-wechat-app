@@ -1,6 +1,8 @@
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 import { AtButton, AtForm, AtInput, AtFab } from 'taro-ui';
+import { login } from '../../services/auth';
+import { setToken } from '../../utils/tools';
 
 export default class Login extends Component {
   config = {
@@ -39,6 +41,27 @@ export default class Login extends Component {
 
   submitHandle() {
     console.log(this.state);
+    login({
+      user_name: this.state.userName,
+      password: this.state.password,
+    })
+      .then(res => {
+        if (res.code == 'y') {
+          setToken(res.info);
+          Taro.showToast({
+            title: res.msg,
+          });
+          Taro.redirectTo({
+            url: '/pages/index/index',
+          });
+        } else {
+          Taro.showToast({
+            title: res.msg,
+            icon: 'none',
+          });
+        }
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
