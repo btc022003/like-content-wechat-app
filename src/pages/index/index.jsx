@@ -32,7 +32,7 @@ export default class Index extends Component {
 
   publishHandle() {
     if (isLogined()) {
-      Taro.redirectTo({ url: '/pages/user/publish' });
+      Taro.navigateTo({ url: '/pages/user/publish' });
     } else {
       Taro.redirectTo({ url: '/pages/auth/login' });
     }
