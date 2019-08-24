@@ -1,0 +1,37 @@
+.article {
+  margin: 20rpx;
+  display: flex;
+  border-bottom: solid 1rpx #6190E8;
+  padding: 10rpx;
+
+  .img {
+    width: 160rpx;
+    height: 140rpx;
+  }
+
+  .txt {
+    flex: 1;
+    padding-left: 40rpx;
+
+    .title {
+      font-size: 36rpx;
+      color: black;
+    }
+
+    .desc {
+      font-size: 24rpx;
+      color: #9b9b9b;
+      margin-top: 18rpx;
+    }
+
+    .author {
+      margin-top: 26rpx;
+      font-size: 26rpx;
+      color: #9b9b9b;
+    }
+  }
+
+  text {
+    display: block;
+  }
+}

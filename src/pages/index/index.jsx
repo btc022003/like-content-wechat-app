@@ -3,6 +3,8 @@ import { View, Text, Swiper, SwiperItem, Image } from '@tarojs/components';
 import { AtFab, AtGrid } from 'taro-ui';
 import './index.scss';
 import { isLogined } from '../../utils/tools';
+import { pagedList } from '../../services/articles';
+import { serverUrl } from '../../utils/config';
 
 export default class Index extends Component {
   config = {
@@ -17,12 +19,20 @@ export default class Index extends Component {
         { id: 2, url: 'https://s2.ax1x.com/2019/07/21/e92sOg.jpg' },
         { id: 3, url: 'https://s2.ax1x.com/2019/07/21/e926mQ.jpg' },
       ],
+      articles: [],
     };
   }
 
   componentWillMount() {}
 
-  componentDidMount() {}
+  componentDidMount() {
+    pagedList().then(res => {
+      console.log(res);
+      this.setState({
+        articles: res.info,
+      });
+    });
+  }
 
   componentWillUnmount() {}
 
@@ -39,7 +49,7 @@ export default class Index extends Component {
   }
 
   render() {
-    const { images } = this.state;
+    const { images, articles } = this.state;
     return (
       <View className='index'>
         <AtFab onClick={this.publishHandle.bind(this)}>发布</AtFab>
@@ -75,6 +85,24 @@ export default class Index extends Component {
             },
           ]}
         />
+        {articles.map(article => {
+          return (
+            <View
+              onClick={() =>
+                Taro.navigateTo({ url: '/pages/detail/index?id=' + article.id })
+              }
+              key={article.id}
+              className='article'
+            >
+              <Image src={serverUrl + article.cover_image} className='img' />
+              <View className='txt'>
+                <Text className='title'>{article.title}</Text>
+                <Text className='desc'>{article.descriptions}</Text>
+                <Text className='author'>作者:{article.user_name}</Text>
+              </View>
+            </View>
+          );
+        })}
       </View>
     );
   }

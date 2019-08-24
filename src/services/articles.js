@@ -8,3 +8,10 @@ import { serverUrl } from '../utils/config';
 export function publish(data) {
   return request(serverUrl + '/api/v1/articles', 'post', data);
 }
+
+/**
+ * 获取文章数据
+ */
+export function pagedList() {
+  return request(serverUrl + '/api/v1/articles', 'get');
+}
