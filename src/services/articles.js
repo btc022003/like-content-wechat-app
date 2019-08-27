@@ -15,3 +15,11 @@ export function publish(data) {
 export function pagedList() {
   return request(serverUrl + '/api/v1/articles', 'get');
 }
+
+/**
+ * 获取详情
+ * @param {*} id
+ */
+export function one(id) {
+  return request(serverUrl + '/api/v1/articles/' + id, 'get');
+}
